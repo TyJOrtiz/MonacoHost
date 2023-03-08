@@ -26,12 +26,9 @@
     <script src="https://raw.githubusercontent.com/TyJOrtiz/MonacoHost/main/min/vs/editor/editor.main.js" type="text/javascript"></script>
 
     <script>
-        function Load()
-        {
             var editor = monaco.editor.create(document.getElementById('container'), {
                 value: 'function helloWorld() {\n\tconsole.log("Hello world!");\n}',
                 language: 'javascript'
             });
-        }
     </script>
 </body>
