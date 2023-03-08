@@ -9,9 +9,9 @@
 		<div id="container" style="width: 800px; height: 600px; border: 1px solid grey"></div>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
 		<!-- OR ANY OTHER AMD LOADER HERE INSTEAD OF loader.js -->
-		<script src="./min/vs/loader.js"></script>
+		<script src="min/vs/loader.js"></script>
 		<script>
-			require.config({ paths: { vs: './min/vs' } });
+			require.config({ paths: { vs: 'min/vs' } });
 
 			require(['vs/editor/editor.main'], function () {
 				var editor = monaco.editor.create(document.getElementById('container'), {
