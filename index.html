@@ -45,7 +45,7 @@ let editor;
 				editor = monaco.editor.create(document.getElementById('container'), {
 					
 				    value: "<xml></xml>",
-				    language: "xml",
+				    language: "html",
 				    tabSize: 2,
 				    autoIndent: "full",
 				    detectIndentation: true,
@@ -53,21 +53,6 @@ let editor;
 				    formatOnPaste: true,
 					automaticLayout: true
 				});
-
-				monaco.languages.setLanguageConfiguration("xml", {
-				    "indentationRules": {
-					"increaseIndentPattern": new RegExp("<(?!\\?|[^>]*\\/>)([-_.A-Za-z0-9]+)(?=\\s|>)\\b[^>]*>(?!.*<\\/\\1>)|<!--(?!.*-->)|\\{[^}\"']*$"),
-					"decreaseIndentPattern": new RegExp("^\\s*(<\\/(?!html)[-_.A-Za-z0-9]+\\b[^>]*>|-->|})"),
-				    },
-				});
-
-				editor.addKeybindingRules([
-				    {
-					// Reindent lines with Ctrl + Shift + F
-					keybinding: monaco.KeyMod.CtrlCmd | monaco.KeyMod.Shift | monaco.KeyCode.KeyF,
-					command: "editor.action.reindentlines",
-				    },
-				]);
 				window.chrome.webview.postMessage('editor loaded');
 			});
 		</script>
