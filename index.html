@@ -33,8 +33,8 @@ let editor;
 
 			// Open your own ContextMenuStrip
 			function contextMenu(e) {
-				chrome.webview.hostObjects.sync.Host.ContextMenu(e.screenX, e.screenY)
-				e.preventDefault()
+				
+				window.chrome.webview.postMessage('right tap');
 			}
 
 			// Close your own ContextMenuStrip
@@ -47,7 +47,6 @@ let editor;
 					language: 'javascript',
 					automaticLayout: true
 				});
-				alert('loaded');
 				window.chrome.webview.postMessage('editor loaded');
 			});
 		</script>
