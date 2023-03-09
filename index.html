@@ -60,13 +60,10 @@ monaco.languages.setLanguageConfiguration("xml", {
     },
 });
 
-monaco.editor.addKeybindingRules([
-    {
-        // Reindent lines with Ctrl + Shift + F
-        keybinding: monaco.KeyMod.CtrlCmd | monaco.KeyMod.Shift | monaco.KeyCode.KeyF,
-        command: "editor.action.reindentlines",
-    },
-]);
+
+var myBinding = editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_Q, function() {
+    alert('SAVE pressed!');
+});
 				window.chrome.webview.postMessage('editor loaded');
 			});
 		</script>
