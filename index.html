@@ -44,14 +44,9 @@ let editor;
 			require(['vs/editor/editor.main'], function () {
 				editor = monaco.editor.create(document.getElementById('container'), {
 					
-				    value: "<xml></xml>",
-				    language: 'html',
-				    tabSize: 2,
-				    autoIndent: "full",
-				    detectIndentation: true,
-				    formatOnType: true,
-				    formatOnPaste: true,
-					automaticLayout: true
+				    value: ['function x() {', '\tconsole.log("Hello");', '}'].join('\n'),
+                language: 'javascript',
+                automaticLayout: true
 				});
 				window.chrome.webview.postMessage('editor loaded');
 			});
