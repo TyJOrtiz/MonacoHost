@@ -34,7 +34,7 @@ let editor;
 			// Open your own ContextMenuStrip
 			function contextMenu(e) {
 				
-				window.chrome.webview.postMessage('right tap');
+				window.chrome.webview.postMessage('right tap' + e.screenX + e.screenY);
 			}
 
 			// Close your own ContextMenuStrip
