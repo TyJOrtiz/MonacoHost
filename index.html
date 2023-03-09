@@ -35,6 +35,7 @@ let editor;
 					automaticLayout: true
 				});
 				alert('loaded');
+				window.chrome.webview.postMessage('hi');
 			});
 		</script>
 	</body>
