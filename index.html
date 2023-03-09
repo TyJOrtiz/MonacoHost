@@ -41,8 +41,8 @@ let editor;
 			    const PADDING = ' '.repeat(2);
 			    const reg = /(>)(<)(\/*)/g;
 			    let pad = 0;
-
-			    xml = xml.replace(reg, '$1\r\n$2$3').replace('"" ',  '$1\r\n$2$3');
+				const attr = /(["']\s)/g;
+			    xml = xml.replace(reg, '$1\r\n$2$3').replace(attr,  '$1\r\n$2$3');
 
 			    return xml.split('\r\n').map((node, index) => {
 				let indent = 0;
