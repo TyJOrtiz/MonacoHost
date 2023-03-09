@@ -28,6 +28,19 @@
 		<script>
 			require.config({ paths: { vs: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.27.0/min/vs' } });
 let editor;
+			addEventListener('contextmenu', contextMenu)
+			addEventListener('mousedown', contextClose)
+
+			// Open your own ContextMenuStrip
+			function contextMenu(e) {
+				chrome.webview.hostObjects.sync.Host.ContextMenu(e.screenX, e.screenY)
+				e.preventDefault()
+			}
+
+			// Close your own ContextMenuStrip
+			function contextClose() {
+				chrome.webview.hostObjects.sync.Host.ContextClose()
+			}
 			require(['vs/editor/editor.main'], function () {
 				editor = monaco.editor.create(document.getElementById('container'), {
 					value: '',
