@@ -43,7 +43,7 @@ let editor;
 			}
 			require(['vs/editor/editor.main'], function () {
 				editor = monaco.editor.create(document.getElementById('container'), {
-    value: "<group>\n<content>\n<value text=\"Press Ctrl + Shift + F\">\</value>\n</content>\n</group>",
+    value: unescape(window.location.search.substring(1)),
     language: "xml",
     tabSize: 2,
     autoIndent: "full",
