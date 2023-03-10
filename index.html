@@ -44,18 +44,27 @@ let editor;
 				const attr = /(["']\s)/g;
 				const attr2 = /<([^\/\s>]+)\s/g;
 				for (const match of xml.matchAll(attr2)){
-					xml = xml.replace(match[0],  match[0] +  '$1\r\n$2$3');
+					xml = xml.replace(match[0],  match[0] +  '\r\n');
 				}
-			    xml = xml.replace(attr,  '$1\r\n$2$3').replace(/>?\s*</g, '>' + '$1\r\n$2$3' + '<');
+			    xml = xml.replace(attr,  '\"\r\n').replace(/>?\s*</g, '>' + '\r\n' + '<').replace('MAIN S', 'MAIN' + '\r\n' + 'S').replace('\r\n\r\n',''); 
 
-			    return xml.split('\r\n').map((node, index) => {
+xml = xml.split('\r\n').map((node, index) => {
 				let indent = 0;
-				if (node.match(/.+<\/\w[^>]*>$/)) {
-				    indent = 0;
+				if (node.match(/<\//g)) {
+				    console.log('ending node ' + node);
+				    indent -= 1;
 				} else if (node.match(/^<\/\w/) && pad > 0) {
+				    console.log(node);
 				    pad -= 1;
-				} else if (node.match(/^<\w[^>]*[^/]>.*$/)) {
-				    indent = 1;
+				} else if (node.match(/<[^\/]/g)) {
+				    console.log('beginning node ' + node);
+				    indent += 1;
+				} else if (node.match(/\/>/g)) {
+				    console.log('ending tag ' + node);
+				    if (pad > 0){
+				        pad -= 1;
+				    }
+				    indent = 0;
 				} else {
 				    indent = 0;
 				}
@@ -63,7 +72,7 @@ let editor;
 				pad += indent;
 
 				return PADDING.repeat(pad - indent) + node;
-			    }).join('\r\n');
+			    }).join('\r\n').replace('$2$3', '');
 			}
 			// Close your own ContextMenuStrip
 			function contextClose() {
