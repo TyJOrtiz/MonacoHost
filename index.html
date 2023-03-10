@@ -48,7 +48,7 @@ let editor;
 				}
 			    xml = xml.replace(attr,  '\"\r\n').replace(/>?\s*</g, '>' + '\r\n' + '<').replace('MAIN S', 'MAIN' + '\r\n' + 'S').replace('\r\n\r\n',''); 
 
-xml = xml.split('\r\n').map((node, index) => {
+return xml.split('\r\n').map((node, index) => {
 				let indent = 0;
 				if (node.match(/<\//g)) {
 				    console.log('ending node ' + node);
