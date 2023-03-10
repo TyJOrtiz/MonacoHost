@@ -72,7 +72,7 @@ return xml.split('\r\n').map((node, index) => {
 				pad += indent;
 
 				return PADDING.repeat(pad - indent) + node;
-			    }).join('\r\n').replace('$2$3', '');
+			    }).join('\r\n').replace('$2$3', '').substring(3, xml.length);
 			}
 			// Close your own ContextMenuStrip
 			function contextClose() {
