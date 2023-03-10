@@ -47,7 +47,7 @@ let editor;
 				const attr2 = /<(\w+)\s/g;
 				for (const match of xml.matchAll(attr2))
 				{
-					xml = xml.replace(match[0],  match[0].substring(0, 1) +  '$1\r\n$2$3' + match[0].substring(2, match[0].length));
+					xml = xml.replace(match[0],  match[0].substring(0, 1) +  '$1\r\n$2$3' + match[0].substring(3, 1));
 				}
 				
 			    xml = xml.replace(reg, '$1\r\n$2$3').replace(attr,  '$1\r\n$2$3');
