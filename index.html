@@ -48,7 +48,7 @@ let editor;
 				}
 			    xml = xml.replace(attr,  '\"\r\n').replace(/>?\s*</g, '>' + '\r\n' + '<').replace('MAIN S', 'MAIN' + '\r\n' + 'S').replace('\r\n\r\n',''); 
 
-return xml.split('\r\n').map((node, index) => {
+xml = xml.split('\r\n').map((node, index) => {
 				let indent = 0;
 				if (node.match(/<\//g)) {
 				    console.log('ending node ' + node);
@@ -72,7 +72,9 @@ return xml.split('\r\n').map((node, index) => {
 				pad += indent;
 
 				return PADDING.repeat(pad - indent) + node;
-			    }).join('\r\n').replace('$2$3', '').substring(3, xml.length);
+			    }).join('\r\n').replace('$2$3', '');
+				xml = xml.substring(3, xml.length);
+				return xml;
 			}
 			// Close your own ContextMenuStrip
 			function contextClose() {
