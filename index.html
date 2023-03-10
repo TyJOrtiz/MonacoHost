@@ -38,19 +38,14 @@ let editor;
 			}
 			function formatXml(xml) {
 			    // https://stackoverflow.com/questions/57039218/doesnt-monaco-editor-support-xml-language-by-default
-			    const PADDING = ' '.repeat(2);
-			    const reg = /(>)\s*(<)(\/*)/g;
+			    const reg = /<([^\/\s>]+)/g;
 			    let pad = 0;
-				
-				const attr = /(["']\s[^\/>])/g;
-				//const attr = /(["']\s)/g;
-				const attr2 = /<(\w+)\s/g;
-				for (const match of xml.matchAll(attr2))
-				{
-					xml = xml.replace(match[0],  match[0].substring(0, 1) +  '$1\r\n$2$3' + match[0].substring(1, 1) + match[0].substring(3, 1));
+				const attr = /(["']\s)/g;
+				const attr2 = /<([^\/\s>]+)\s/g;
+				for (const match of xml.matchAll(attr2)){
+					xml = xml.replace(match[0],  match[0] +  '$1\r\n$2$3');
 				}
-				
-			    xml = xml.replace(reg, '$1\r\n$2$3').replace(attr,  '$1\r\n$2$3');
+			    xml = xml.replace(attr,  '$1\r\n$2$3');
 
 			    return xml.split('\r\n').map((node, index) => {
 				let indent = 0;
