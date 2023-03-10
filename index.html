@@ -46,7 +46,7 @@ let editor;
 				for (const match of xml.matchAll(attr2)){
 					xml = xml.replace(match[0],  match[0] +  '$1\r\n$2$3');
 				}
-			    xml = xml.replace(attr,  '$1\r\n$2$3');
+			    xml = xml.replace(attr,  '$1\r\n$2$3').replace(/>?\s*</g, '>' + '$1\r\n$2$3' + '<');
 
 			    return xml.split('\r\n').map((node, index) => {
 				let indent = 0;
