@@ -39,6 +39,7 @@ let editor;
 			function formatXml(xml) {
 			    // https://stackoverflow.com/questions/57039218/doesnt-monaco-editor-support-xml-language-by-default
 			    const reg = /<([^\/\s>]+)/g;
+			const PADDING = ' '.repeat(2);
 			    let pad = 0;
 				const attr = /(["']\s)/g;
 				const attr2 = /<([^\/\s>]+)\s/g;
