@@ -42,7 +42,7 @@ let editor;
 			    const reg = /(>)(<)(\/*)/g;
 			    let pad = 0;
 				const attr = /(["']\s)/g;
-			    xml = xml.replace(reg, '$1\r\n$2$3').replace(attr,  '""\r\n');
+			    xml = xml.replace(reg, '$1\r\n$2$3').replace(attr,  '\"\r\n');
 
 			    return xml.split('\r\n').map((node, index) => {
 				let indent = 0;
