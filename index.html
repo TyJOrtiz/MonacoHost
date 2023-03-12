@@ -101,9 +101,6 @@ xml = xml.split('\r\n').map((node, index) => {
 			];
 		    },
 		});
-			var myBinding = editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_Q, function() {
-			    editor.action.reindentlines();
-			});
 				
 			window.chrome.webview.postMessage('editor loaded');
 			});
