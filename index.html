@@ -46,7 +46,7 @@ let editor;
 				for (const match of xml.matchAll(attr2)){
 					xml = xml.replace(match[0],  match[0] +  '\r\n');
 				}
-			    xml = xml.replace(attr,  '\"\r\n').replace(/>?\s*</g, '>' + '\r\n' + '<').replace('MAIN S', 'MAIN' + '\r\n' + 'S').replace('\r\n\r\n','').replace('\r\n/>', '/>'); 
+			    xml = xml.replace(attr,  '\"\r\n').replace(/>?\s*</g, '>' + '\r\n' + '<').replace('MAIN S', 'MAIN' + '\r\n' + 'S').replace('\r\n\r\n','').replace('\r\n/>', '/>').replace('\r\n        />', '/>'); 
 
 xml = xml.split('\r\n').map((node, index) => {
 				let indent = 0;
