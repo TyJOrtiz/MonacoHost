@@ -68,11 +68,11 @@ xml = xml.split('\r\n').map((node, index) => {
 				else if (node.match(/\/>/g)) 
 				{
 				    console.log('ending tag ' + node);
+				indent = 0;
 				    if (pad > 0)
 				    {
 				        pad -= 1;
 				    }
-				    indent -= 1;
 				} 
 				else 
 				{
