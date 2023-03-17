@@ -54,21 +54,25 @@ xml = xml.split('\r\n').map((node, index) => {
 				{
 				    console.log('ending node ' + node);
 				    indent -= 1;
+				console.log(pad);
 				} 
 				else if (node.match(/^<\/\w/) && pad > 0) 
 				{
 				    console.log(node);
 				    pad -= 1;
+				console.log(pad);
 				} 
 				else if (node.match(/<[^\/]/g)) 
 				{
 				    console.log('beginning node ' + node);
 				    indent += 1;
+				console.log(pad);
 				} 
 				else if (node.match(/\/>/g)) 
 				{
 				    console.log('ending tag ' + node);
 				indent = 0;
+				console.log(pad);
 				    if (pad > 0)
 				    {
 				        pad -= 1;
